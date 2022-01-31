@@ -4,8 +4,8 @@
 This repository contains a homework submission.
 
 ```text
-JHED=
-GITHUB_USERNAME=
+JHED= ehsieh2
+GITHUB_USERNAME= ehsieh2
 GITHUB_REPO=
 GITHUB_PAGE=
 ```
