@@ -5,7 +5,7 @@ This repository contains a homework submission.
 
 ```text
 JHED= ehsieh2
-GITHUB_USERNAME= ehsieh2
+GITHUB_USERNAME= ehsieh2@jhu.edu
 GITHUB_REPO= cs280spring-classroom/the-game-of-pig-ehsieh2
 GITHUB_PAGE= https://cs280spring-classroom.github.io/the-game-of-pig-ehsieh2/
 ```
