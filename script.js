@@ -42,16 +42,24 @@ function roll() {
   const output = "&#x268" + (faceValue  - 1) + "; ";
   const die = document.getElementById("die");
   die.innerHTML = output;
+
+  holdValue += faceValue;
+  if (faceValue == 1) {
+    holdValue = 0;
+  }
   
   if (count % 2 != 0) {
-    holdValue += faceValue;
     document.getElementById("p1-hold").style.width = holdValue + "%";
     document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p1-hold").innerText = holdValue;
   } else {
-    holdValue += faceValue;
     document.getElementById("p2-hold").style.width = holdValue + "%";
     document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p2-hold").innerText = holdValue;
+  }
+
+  //TODO: better way of changing player after 1 val is roled
+  if (faceValue == 1) {
+    count++;
   }
 }
