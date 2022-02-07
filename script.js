@@ -15,13 +15,25 @@ function hold() {
     document.getElementById("p1-score").style.width = score + "%";
     document.getElementById("p1-score").setAttribute("aria-valuenow", score);
     document.getElementById("p1-score").innerText = score;
+
+    holdValue = 0;
+
+    document.getElementById("p1-hold").style.width = holdValue + "%";
+    document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
+    document.getElementById("p1-hold").innerText = holdValue;
   } else {
     score2 += holdValue;
     document.getElementById("p2-score").style.width = score2 + "%";
     document.getElementById("p2-score").setAttribute("aria-valuenow", score2);
     document.getElementById("p2-score").innerText = score2;
+
+    holdValue = 0;
+
+    document.getElementById("p2-hold").style.width = holdValue + "%";
+    document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
+    document.getElementById("p2-hold").innerText = holdValue;
   }
-  holdValue = 0;
+ 
   count++; //move to next turn
 }
 
