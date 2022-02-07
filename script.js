@@ -6,17 +6,23 @@ rollBtn.addEventListener("click", roll);
 
 let holdValue = 0;
 let score = 0;
+let score2 = 0;
+let count = 1;
 
 function hold() {
-  holdValue += 5;
-  document.getElementById("p1-hold").style.width = holdValue + "%";
-  document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
-  document.getElementById("p1-hold").innerText = holdValue;
-
-  score += 10;
-  document.getElementById("p1-score").style.width = score + "%";
-  document.getElementById("p1-score").setAttribute("aria-valuenow", score);
-  document.getElementById("p1-score").innerText = score;
+  if (count % 2 != 0) {
+    score += holdValue;
+    document.getElementById("p1-score").style.width = score + "%";
+    document.getElementById("p1-score").setAttribute("aria-valuenow", score);
+    document.getElementById("p1-score").innerText = score;
+  } else {
+    score2 += holdValue;
+    document.getElementById("p2-score").style.width = score2 + "%";
+    document.getElementById("p2-score").setAttribute("aria-valuenow", score2);
+    document.getElementById("p2-score").innerText = score2;
+  }
+  holdValue = 0;
+  count++; //move to next turn
 }
 
 function roll() {
@@ -24,4 +30,16 @@ function roll() {
   const output = "&#x268" + (faceValue  - 1) + "; ";
   const die = document.getElementById("die");
   die.innerHTML = output;
+  
+  if (count % 2 != 0) {
+    holdValue += faceValue;
+    document.getElementById("p1-hold").style.width = holdValue + "%";
+    document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
+    document.getElementById("p1-hold").innerText = holdValue;
+  } else {
+    holdValue += faceValue;
+    document.getElementById("p2-hold").style.width = holdValue + "%";
+    document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
+    document.getElementById("p2-hold").innerText = holdValue;
+  }
 }
