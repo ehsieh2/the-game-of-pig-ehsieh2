@@ -49,10 +49,12 @@ function roll() {
   }
   
   if (count % 2 != 0) {
+    //document.getElementById("result").innnerText("Player-1 turn!");
     document.getElementById("p1-hold").style.width = holdValue + "%";
     document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p1-hold").innerText = holdValue;
   } else {
+    //document.getElementById("result").innerText("Player-2 turn!");
     document.getElementById("p2-hold").style.width = holdValue + "%";
     document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p2-hold").innerText = holdValue;
