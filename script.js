@@ -38,6 +38,7 @@ function hold() {
 }
 
 function roll() {
+  //TODO: end game when player reaches 100, score + hold value == 100
   const faceValue = Math.floor(Math.random() * 6) + 1;
   const output = "&#x268" + (faceValue  - 1) + "; ";
   const die = document.getElementById("die");
