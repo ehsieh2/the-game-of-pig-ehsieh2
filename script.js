@@ -39,6 +39,7 @@ function hold() {
 
 function roll() {
   //TODO: end game when player reaches 100, score + hold value == 100
+  //TODO: change label when player's turn changes
   const faceValue = Math.floor(Math.random() * 6) + 1;
   const output = "&#x268" + (faceValue  - 1) + "; ";
   const die = document.getElementById("die");
@@ -50,12 +51,17 @@ function roll() {
   }
   
   if (count % 2 != 0) {
+    // if (holdValue + score >= 100) {
+    //   //END GAME DISABLE BUTTONS
+    //   document.getElementById("p1-hold").setAttribute("aria-valuenow", '100 \uD83C\uDF89');
+    // }
+
     //document.getElementById("result").innnerText("Player-1 turn!");
     document.getElementById("p1-hold").style.width = holdValue + "%";
     document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p1-hold").innerText = holdValue;
   } else {
-    //document.getElementById("result").innerText("Player-2 turn!");
+    //document.getElementById("result") = "Player-2 turn!";
     document.getElementById("p2-hold").style.width = holdValue + "%";
     document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p2-hold").innerText = holdValue;
