@@ -3,8 +3,6 @@ const rollBtn = document.getElementById("roll");
 
 holdBtn.addEventListener("click", hold);
 rollBtn.addEventListener("click", roll);
-//rollBtn.addEventListener("click", changeTurn);
-//holdBtn.addEventListener("click", changeTurn);
 
 let holdValue = 0;
 let score = 0;
@@ -17,11 +15,7 @@ function changeTurn() {
       document.getElementById("result").innerText = "Player-1 turn!";
     } else {
       document.getElementById("result").innerText = "Player-2 turn!";
-
-      console.log("in player 2 area should change");
     }
-  //document.getElementById('result').innnerText = "Player-" + (count%2 + 1).toString + "turn!";
-  //console.log("Player-" + (count%2 + 1).toString + "turn!");
 }
 
 function hold() {
@@ -54,8 +48,6 @@ function hold() {
 }
 
 function roll() {
-  //TODO: end game when player reaches 100, score + hold value == 100
-  //TODO: change label when player's turn changes
   const faceValue = Math.floor(Math.random() * 6) + 1;
   const output = "&#x268" + (faceValue  - 1) + "; ";
   const die = document.getElementById("die");
@@ -67,16 +59,26 @@ function roll() {
   }
   
   if (count % 2 === 0) {
-    // if (holdValue + score >= 100) {
-    //   //END GAME DISABLE BUTTONS
-    //   document.getElementById("roll").disabled = true;
-    //   document.getElementById("hold").disabled = true;
-    //   document.getElementById("p1-hold").setAttribute("aria-valuenow", '100 \uD83C\uDF89');
-    // }
+    if (holdValue + score >= 100) {
+      //END GAME DISABLE BUTTONS
+      document.getElementById("roll").disabled = true;
+      document.getElementById("hold").disabled = true;
+
+      //TODO: set up win screen, green bar and emoji
+      //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
+    }
     document.getElementById("p1-hold").style.width = holdValue + "%";
     document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p1-hold").innerText = holdValue;
   } else {
+    if (holdValue + score2 >= 100) {
+      //END GAME DISABLE BUTTONS
+      document.getElementById("roll").disabled = true;
+      document.getElementById("hold").disabled = true;
+
+      //TODO: set up win screen, green bar and emoji
+      //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
+    }
     document.getElementById("p2-hold").style.width = holdValue + "%";
     document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p2-hold").innerText = holdValue;
