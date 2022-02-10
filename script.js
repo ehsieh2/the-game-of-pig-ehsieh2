@@ -1,5 +1,7 @@
 const holdBtn = document.getElementById("hold");
 const rollBtn = document.getElementById("roll");
+const p1ScoreID = document.getElementById("p1-score");
+const p2ScoreID = document.getElementById("p2-hold");
 
 holdBtn.addEventListener("click", hold);
 rollBtn.addEventListener("click", roll);
@@ -64,6 +66,9 @@ function roll() {
       document.getElementById("roll").disabled = true;
       document.getElementById("hold").disabled = true;
 
+      p1ScoreID.setAttribute("class", "progress-bar bg-success");
+      p1ScoreID.style.width(100 + "%");
+      p1ScoreID.innerText="100 \uD83C\uDF89";
       //TODO: set up win screen, green bar and emoji
       //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
     }
@@ -71,11 +76,14 @@ function roll() {
     document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
     document.getElementById("p1-hold").innerText = holdValue;
   } else {
-    if (holdValue + score2 >= 100) {
+    if (holdValue + score >= 100) {
       //END GAME DISABLE BUTTONS
       document.getElementById("roll").disabled = true;
       document.getElementById("hold").disabled = true;
 
+      p2ScoreID.setAttribute("class", "progress-bar bg-success");
+      p2ScoreID.style.width(100 + "%");
+      p2ScoreID.innerText="100 \uD83C\uDF89";
       //TODO: set up win screen, green bar and emoji
       //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
     }
