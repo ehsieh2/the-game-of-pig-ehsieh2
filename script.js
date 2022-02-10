@@ -64,16 +64,7 @@ function roll() {
   
   if (count % 2 === 0) {
     if (holdValue + score >= 100) {
-      //END GAME DISABLE BUTTONS
-      document.getElementById("roll").disabled = true;
-      document.getElementById("hold").disabled = true;
-      p1HoldID.style.width = 0 + "%";
-      p1HoldID.setAttribute("aria-valuenow", 100);
-      p1HoldID.innerText = 0;
-
-      p1ScoreID.style.width = 100 + "%";
-      p1ScoreID.setAttribute("class", "progress-bar bg-success");
-      p1ScoreID.innerText="100 🎉";
+      winner();
     } else {
       p1HoldID.style.width = holdValue + "%";
       p1HoldID.setAttribute("aria-valuenow", holdValue);
@@ -81,17 +72,7 @@ function roll() {
     }
   } else {
     if (holdValue + score2 >= 100) {
-      //END GAME DISABLE BUTTONS
-      document.getElementById("roll").disabled = true;
-      document.getElementById("hold").disabled = true;
-
-      p2HoldID.style.width = 0 + "%";
-      p2HoldID.setAttribute("aria-valuenow", 100);
-      p2HoldID.innerText = 0;
-
-      p2ScoreID.style.width = 100 + "%";
-      p2ScoreID.setAttribute("class", "progress-bar bg-success");
-      p2ScoreID.innerText="100 🎉";
+      winner();
     } else {
       p2HoldID.style.width = holdValue + "%";
       p2HoldID.setAttribute("aria-valuenow", holdValue);
@@ -102,5 +83,29 @@ function roll() {
   if (faceValue === 1) {
     count++;
     changeTurn();
+  }
+}
+
+function winner() {
+  //END GAME DISABLE BUTTONS
+  document.getElementById("roll").disabled = true;
+  document.getElementById("hold").disabled = true;
+  
+  if (count % 2 == 0) {
+    p1HoldID.style.width = 0 + "%";
+    p1HoldID.setAttribute("aria-valuenow", 100);
+    p1HoldID.innerText = 0;
+
+    p1ScoreID.style.width = 100 + "%";
+    p1ScoreID.setAttribute("class", "progress-bar bg-success");
+    p1ScoreID.innerText="100 🎉";
+  } else {
+    p2HoldID.style.width = 0 + "%";
+    p2HoldID.setAttribute("aria-valuenow", 100);
+    p2HoldID.innerText = 0;
+    
+    p2ScoreID.style.width = 100 + "%";
+    p2ScoreID.setAttribute("class", "progress-bar bg-success");
+    p2ScoreID.innerText="100 🎉";
   }
 }
