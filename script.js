@@ -1,5 +1,9 @@
 const holdBtn = document.getElementById("hold");
 const rollBtn = document.getElementById("roll");
+const p1ScoreID = document.getElementById("p1-score");
+const p2ScoreID = document.getElementById("p2-score");
+const p1HoldID = document.getElementById("p1-hold");
+const p2HoldID = document.getElementById("p2-hold");
 
 holdBtn.addEventListener("click", hold);
 rollBtn.addEventListener("click", roll);
@@ -21,26 +25,26 @@ function changeTurn() {
 function hold() {
   if (count % 2 === 0) {
     score += holdValue;
-    document.getElementById("p1-score").style.width = score + "%";
-    document.getElementById("p1-score").setAttribute("aria-valuenow", score);
-    document.getElementById("p1-score").innerText = score;
+    p1ScoreID.style.width = score + "%";
+    p1ScoreID.setAttribute("aria-valuenow", score);
+    p1ScoreID.innerText = score;
 
     holdValue = 0;
 
-    document.getElementById("p1-hold").style.width = holdValue + "%";
-    document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
-    document.getElementById("p1-hold").innerText = holdValue;
+    p1HoldID.style.width = holdValue + "%";
+    p1HoldID.setAttribute("aria-valuenow", holdValue);
+    p1HoldID.innerText = holdValue;
   } else {
     score2 += holdValue;
-    document.getElementById("p2-score").style.width = score2 + "%";
-    document.getElementById("p2-score").setAttribute("aria-valuenow", score2);
-    document.getElementById("p2-score").innerText = score2;
+    p2ScoreID.style.width = score2 + "%";
+    p2ScoreID.setAttribute("aria-valuenow", score2);
+    p2ScoreID.innerText = score2;
 
     holdValue = 0;
 
-    document.getElementById("p2-hold").style.width = holdValue + "%";
-    document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
-    document.getElementById("p2-hold").innerText = holdValue;
+    p2HoldID.style.width = holdValue + "%";
+    p2HoldID.setAttribute("aria-valuenow", holdValue);
+    p2HoldID.innerText = holdValue;
   }
  
   count++; //move to next turn
@@ -63,40 +67,36 @@ function roll() {
       //END GAME DISABLE BUTTONS
       document.getElementById("roll").disabled = true;
       document.getElementById("hold").disabled = true;
-      document.getElementById("p1-hold").style.width = 0 + "%";
-      document.getElementById("p1-hold").setAttribute("aria-valuenow", 0);
+      p1HoldID.style.width = 0 + "%";
+      p1HoldID.setAttribute("aria-valuenow", 100);
+      p1HoldID.innerText = 0;
 
-      document.getElementById("p1-score").style.width = 100 + "%";
-      document.getElementById("p1-score").setAttribute("class", "progress-bar bg-success");
-      document.getElementById("p1-score").innerText="100 🎉";
-
-      // document.getElementById("result").innerText = "Player-1 won!";
-      // //TODO: set up win screen, green bar and emoji
-      // //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
+      p1ScoreID.style.width = 100 + "%";
+      p1ScoreID.setAttribute("class", "progress-bar bg-success");
+      p1ScoreID.innerText="100 🎉";
+    } else {
+      p1HoldID.style.width = holdValue + "%";
+      p1HoldID.setAttribute("aria-valuenow", holdValue);
+      p1HoldID.innerText = holdValue;
     }
-    document.getElementById("p1-hold").style.width = holdValue + "%";
-    document.getElementById("p1-hold").setAttribute("aria-valuenow", holdValue);
-    document.getElementById("p1-hold").innerText = holdValue;
   } else {
     if (holdValue + score2 >= 100) {
       //END GAME DISABLE BUTTONS
       document.getElementById("roll").disabled = true;
       document.getElementById("hold").disabled = true;
 
-      document.getElementById("p2-hold").style.width = 0 + "%";
-      document.getElementById("p2-hold").setAttribute("aria-valuenow", 0);
-      
-      document.getElementById("p2-score").style.width = 100 + "%";
-      document.getElementById("p2-score").setAttribute("class", "progress-bar bg-success");
-      document.getElementById("p2-score").innerText="100 🎉";
+      p2HoldID.style.width = 0 + "%";
+      p2HoldID.setAttribute("aria-valuenow", 100);
+      p2HoldID.innerText = 0;
 
-      // document.getElementById("result").innerText = "Player-2 won!";
-      //TODO: set up win screen, green bar and emoji
-      //document.getElementById("p1-hold").innerText="100 \uD83C\uDF89";
+      p2ScoreID.style.width = 100 + "%";
+      p2ScoreID.setAttribute("class", "progress-bar bg-success");
+      p2ScoreID.innerText="100 🎉";
+    } else {
+      p2HoldID.style.width = holdValue + "%";
+      p2HoldID.setAttribute("aria-valuenow", holdValue);
+      p2HoldID.innerText = holdValue;
     }
-    document.getElementById("p2-hold").style.width = holdValue + "%";
-    document.getElementById("p2-hold").setAttribute("aria-valuenow", holdValue);
-    document.getElementById("p2-hold").innerText = holdValue;
   }
 
   if (faceValue === 1) {
